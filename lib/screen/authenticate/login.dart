@@ -1,16 +1,14 @@
-import 'package:final_project/screen/authenticate/sign_up.dart';
-
-import 'package:final_project/screen/chat/dashbord.dart';
+import 'package:flutter/material.dart';
 import 'package:final_project/const_config/color_config.dart';
 import 'package:final_project/const_config/text_config.dart';
 import 'package:final_project/services/validators.dart';
 import 'package:final_project/widgets/custom_buttons/round_action_button.dart';
 import 'package:final_project/widgets/input_widget/password_input_field.dart';
 import 'package:final_project/widgets/input_widget/simple_input_field.dart';
-import 'package:flutter/material.dart';
-
 import '../main_screen.dart';
 import 'forget_password_screen.dart';
+import '../authenticate/sign_up.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -21,7 +19,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
-
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -42,12 +39,24 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 30),
-                  Text("Welcome to", style: TextDesign().dashboardWidgetTitle),
-                  Text("Food Cap", style: TextDesign().popHead.copyWith(color: MyColor.primary, fontSize: 22)),
+                  Text(
+                    "Welcome to",
+                    style: TextDesign().dashboardWidgetTitle,
+                  ),
+                  Text(
+                    "Food Cap",
+                    style: TextDesign().popHead.copyWith(
+                      color: MyColor.primary,
+                      fontSize: 22,
+                    ),
+                  ),
                   const SizedBox(height: 10),
                   Container(
                     width: double.infinity,
-                    decoration: BoxDecoration(color: MyColor.white, borderRadius: BorderRadius.circular(10)),
+                    decoration: BoxDecoration(
+                      color: MyColor.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     padding: const EdgeInsets.all(20),
                     child: Column(
                       children: [
@@ -72,7 +81,11 @@ class _LoginPageState extends State<LoginPage> {
                           onClick: () {
                             FocusScope.of(context).unfocus();
                             if (formKey.currentState!.validate()) {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MainScreen()));
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const MainScreen(),
+                                ),
+                              );
                             }
                           },
                           width: size.width * 0.8,
@@ -84,17 +97,28 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             Text(
                               "Forgot your password?",
-                              style: TextDesign().bodyTextSmall.copyWith(color: MyColor.disabled),
+                              style: TextDesign().bodyTextSmall.copyWith(
+                                color: MyColor.disabled,
+                              ),
                             ),
                             InkWell(
                               onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ForgetPasswordPage()));
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                    const ForgetPasswordPage(),
+                                  ),
+                                );
                               },
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 4),
+                                padding:
+                                const EdgeInsets.symmetric(horizontal: 4),
                                 child: Text(
                                   "Reset it now!",
-                                  style: TextDesign().pageTitle.copyWith(color: MyColor.primary, fontSize: 13),
+                                  style: TextDesign().pageTitle.copyWith(
+                                    color: MyColor.primary,
+                                    fontSize: 13,
+                                  ),
                                 ),
                               ),
                             )

@@ -7,6 +7,7 @@ class Food {
   int reviews;
   bool isLiked;
 
+
   Food({
     required this.name,
     required this.image,

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../models/food.dart';
+import '../screen/quick_foods_screen.dart';
+import '../screen/recipe_screen.dart';
 
 class QuickAndFastList extends StatelessWidget {
-  const QuickAndFastList({Key? key}) : super(key: key);
+  const QuickAndFastList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,12 @@ class QuickAndFastList extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const QuickFoodsScreen(),
+                ),
+              ),
               child: const Text("View all"),
             ),
           ],
@@ -33,7 +40,14 @@ class QuickAndFastList extends StatelessWidget {
           child: Row(
             children: List.generate(
               foods.length,
-                  (index) => Container(
+                  (index) => GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RecipeScreen(food: foods[index]),
+                  ),
+                ),
+                child: Container(
                   margin: const EdgeInsets.only(right: 10),
                   width: 200,
                   child: Stack(
@@ -114,6 +128,7 @@ class QuickAndFastList extends StatelessWidget {
               ),
             ),
           ),
+        ),
       ],
     );
   }

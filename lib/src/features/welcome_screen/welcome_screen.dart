@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../../screen/authenticate/sign_up.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -100,22 +99,6 @@ class WelcomeScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                ),
-              ),
-            ),
-            // Login button
-            Positioned(
-              left: 20,
-              right: 20,
-              bottom: 100,
-              child: GestureDetector(
-                onTap: () {
-                  // Handle login button press
-                },
-                child: Text(
-                  'Already have an account? Log in',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
               ),
             ),
