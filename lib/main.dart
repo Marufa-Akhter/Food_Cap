@@ -5,6 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:final_project/screen/authenticate/sign_up.dart';
 import 'package:final_project/const_config/color_config.dart';
 import 'package:final_project/src/features/welcome_screen/welcome_screen.dart';
+import 'package:final_project/screen/recipe_screen.dart'; // Import RecipeScreen
+import 'package:final_project/models/food.dart'; 
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +26,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Create a valid Food object
+    Food defaultFood = Food(
+      name: "Default Food",
+      image: "assets/default_image.jpg",
+      cal: 0,
+      time: 0,
+      rate: 0,
+      reviews: 0,
+      isLiked: false,
+    );
+    
     return MaterialApp(
       title: 'Food Cap',
       debugShowCheckedModeBanner: false,
@@ -30,6 +44,22 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: MyColor.primary),
         useMaterial3: true,
       ),
+
+      initialRoute: '/', // Define initial route
+      routes: {
+        '/': (context) => StreamBuilder<User?>(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return SignUp();
+                } else {
+                  return WelcomeScreen();
+                }
+              },
+            ),
+        '/recipe': (context) => RecipeScreen(food: defaultFood), // Add RecipeScreen route
+      },
+
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
