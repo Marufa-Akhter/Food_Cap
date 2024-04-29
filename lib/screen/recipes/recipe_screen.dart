@@ -131,13 +131,11 @@ class _RecipeScreenState extends State<RecipeScreen> {
         print('Updated Ingredients: $ingredients');
         print('Updated Instructions: $instructions');
 
-        // Perform any necessary updates to the existing recipe
       } else {
         print('Adding new recipe: $recipeName');
         print('Ingredients: $ingredients');
         print('Instructions: $instructions');
 
-        // Perform any necessary actions to save the new recipe
       }
     } else {
       showDialog(
